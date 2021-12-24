@@ -1,0 +1,125 @@
+<html>
+
+    <style>
+
+        #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9 
+        {
+            width: 80px;
+            height: 52px;
+            margin: auto;
+            border: 1px solid gray;
+            border-radius: 6px;
+            font-size: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script>
+
+        let clicked=0;
+        let arr=[];
+
+        function check(x)
+        {     
+            if(clicked!=0)// check if there is X/O in table
+            {
+                if(document.getElementById(clicked).value=='X')
+                {
+                    document.getElementById(x.id).value='O';
+                    document.getElementById(x.id).style.backgroundColor='#b3d9ff';
+                }
+
+                if(document.getElementById(clicked).value=='O')
+                {
+                    document.getElementById(x.id).value='X';
+                    document.getElementById(x.id).style.backgroundColor='#ff9999';
+                }
+            }  
+            
+            else // only if table empty
+            {
+                document.getElementById(x.id).value='X';
+                document.getElementById(x.id).style.backgroundColor='#ff9999';
+            }
+
+            arr.push(clicked);
+            clicked=x.id;
+            
+            if((document.getElementById("b1").value=='X' && document.getElementById("b2").value=='X' &&
+            document.getElementById("b3").value=='X') ||
+            (document.getElementById("b4").value=='X' && document.getElementById("b5").value=='X' &&
+            document.getElementById("b6").value=='X') ||
+            (document.getElementById("b7").value=='X' && document.getElementById("b8").value=='X' &&
+            document.getElementById("b9").value=='X') ||
+            (document.getElementById("b1").value=='X' && document.getElementById("b4").value=='X' &&
+            document.getElementById("b7").value=='X') ||
+            (document.getElementById("b2").value=='X' && document.getElementById("b5").value=='X' &&
+            document.getElementById("b8").value=='X') ||
+            (document.getElementById("b3").value=='X' && document.getElementById("b6").value=='X' &&
+            document.getElementById("b9").value=='X') ||
+            (document.getElementById("b1").value=='X' && document.getElementById("b5").value=='X' &&
+            document.getElementById("b9").value=='X') ||
+            (document.getElementById("b3").value=='X' && document.getElementById("b5").value=='X' &&
+            document.getElementById("b7").value=='X'))
+            {
+                alert("Player X won!")
+                location.reload();
+            }
+
+            if((document.getElementById("b1").value=='O' && document.getElementById("b2").value=='O' &&
+            document.getElementById("b3").value=='O') ||
+            (document.getElementById("b4").value=='O' && document.getElementById("b5").value=='O' &&
+            document.getElementById("b6").value=='O') ||
+            (document.getElementById("b7").value=='O' && document.getElementById("b8").value=='O' &&
+            document.getElementById("b9").value=='O') ||
+            (document.getElementById("b1").value=='O' && document.getElementById("b4").value=='O' &&
+            document.getElementById("b7").value=='O') ||
+            (document.getElementById("b2").value=='O' && document.getElementById("b5").value=='O' &&
+            document.getElementById("b8").value=='O') ||
+            (document.getElementById("b3").value=='O' && document.getElementById("b6").value=='O' &&
+            document.getElementById("b9").value=='O') ||
+            (document.getElementById("b1").value=='O' && document.getElementById("b5").value=='O' &&
+            document.getElementById("b9").value=='O') ||
+            (document.getElementById("b3").value=='O' && document.getElementById("b5").value=='O' &&
+            document.getElementById("b7").value=='O'))
+            {
+                alert("Player O won!")
+                location.reload();
+            }
+        }
+
+        function undo()
+        {
+            document.getElementById(clicked).value='';
+            document.getElementById(clicked).style.backgroundColor='';
+
+            clicked=arr[arr.length-1];
+            arr= arr.filter(x=> x!=clicked);
+        }
+
+    </script>
+
+    <body>
+       
+        <div style= "text-align: center;">
+
+            <input type="text" id="b1" onclick="check(b1)" value="" readonly>
+            <input type="text" id="b2" onclick="check(b2)" value="" readonly>
+            <input type="text" id="b3" onclick="check(b3)" value="" readonly><br><br>
+            <input type="text" id="b4" onclick="check(b4)" value="" readonly>
+            <input type="text" id="b5" onclick="check(b5)" value="" readonly>
+            <input type="text" id="b6" onclick="check(b6)" value="" readonly><br><br>
+            <input type="text" id="b7" onclick="check(b7)" value="" readonly>
+            <input type="text" id="b8" onclick="check(b8)" value="" readonly>
+            <input type="text" id="b9" onclick="check(b9)" value="" readonly><br><br>
+
+            <input type="button" value="Undo" onclick="undo()" style="cursor: pointer;">
+            <input type="button" value="New Game" onclick="location.reload()" style="cursor: pointer;">
+
+        </div>
+
+    </body>
+
+</html>
