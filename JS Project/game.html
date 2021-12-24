@@ -1,5 +1,9 @@
 <html>
 
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    </head>
+
     <style>
 
         #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9 
@@ -18,34 +22,37 @@
 
     <script>
 
-        let clicked=0;
-        let arr=[];
+        let arr=[], pressed=[];
 
         function check(x)
-        {     
-            if(clicked!=0)// check if there is X/O in table
+        {  
+            if(!pressed.includes(x.id))
             {
-                if(document.getElementById(clicked).value=='X')
-                {
-                    document.getElementById(x.id).value='O';
-                    document.getElementById(x.id).style.backgroundColor='#b3d9ff';
-                }
+                pressed.push(x.id);
 
-                if(document.getElementById(clicked).value=='O')
+                if(arr.length!=0)// check if there is X/O in table
+                {
+                    if(document.getElementById(arr[arr.length-1]).value=='X')
+                    {
+                        document.getElementById(x.id).value='O';
+                        document.getElementById(x.id).style.backgroundColor='#b3d9ff';
+                    }
+
+                    if(document.getElementById(arr[arr.length-1]).value=='O')
+                    {
+                        document.getElementById(x.id).value='X';
+                        document.getElementById(x.id).style.backgroundColor='#ff9999';
+                    }
+                }  
+                
+                else // only if table empty
                 {
                     document.getElementById(x.id).value='X';
                     document.getElementById(x.id).style.backgroundColor='#ff9999';
                 }
-            }  
-            
-            else // only if table empty
-            {
-                document.getElementById(x.id).value='X';
-                document.getElementById(x.id).style.backgroundColor='#ff9999';
-            }
 
-            arr.push(clicked);
-            clicked=x.id;
+                arr.push(x.id);
+            }
             
             if((document.getElementById("b1").value=='X' && document.getElementById("b2").value=='X' &&
             document.getElementById("b3").value=='X') ||
@@ -92,11 +99,11 @@
 
         function undo()
         {
-            document.getElementById(clicked).value='';
-            document.getElementById(clicked).style.backgroundColor='';
+            document.getElementById(arr[arr.length-1]).value='';
+            document.getElementById(arr[arr.length-1]).style.backgroundColor='';
 
-            clicked=arr[arr.length-1];
-            arr= arr.filter(x=> x!=clicked);
+            pressed= pressed.filter(x=> x!=pressed[pressed.length-1])
+            arr= arr.filter(x=> x!=arr[arr.length-1]);
         }
 
     </script>
