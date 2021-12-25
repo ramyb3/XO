@@ -22,14 +22,12 @@
 
     <script>
 
-        let arr=[], pressed=[];
+        let arr=[], status=false;
 
         function check(x)
         {  
-            if(!pressed.includes(x.id))
+            if(!arr.includes(x.id))
             {
-                pressed.push(x.id);
-
                 if(arr.length!=0)// check if there is X/O in table
                 {
                     if(document.getElementById(arr[arr.length-1]).value=='X')
@@ -71,7 +69,10 @@
             (document.getElementById("b3").value=='X' && document.getElementById("b5").value=='X' &&
             document.getElementById("b7").value=='X'))
             {
-                alert("Player X won!")
+                alert("Player X won!");
+
+                status=true;
+
                 location.reload();
             }
 
@@ -92,11 +93,14 @@
             (document.getElementById("b3").value=='O' && document.getElementById("b5").value=='O' &&
             document.getElementById("b7").value=='O'))
             {
-                alert("Player O won!")
+                alert("Player O won!");
+
+                status=true;
+                
                 location.reload();
             }
 
-            if(arr.length==9)
+            if(arr.length==9 && status==false)
             {
                 alert("It's a tie!");
                 location.reload();
@@ -108,7 +112,6 @@
             document.getElementById(arr[arr.length-1]).value='';
             document.getElementById(arr[arr.length-1]).style.backgroundColor='';
 
-            pressed= pressed.filter(x=> x!=pressed[pressed.length-1])
             arr= arr.filter(x=> x!=arr[arr.length-1]);
         }
 
@@ -128,8 +131,8 @@
             <input type="text" id="b8" onclick="check(b8)" value="" readonly>
             <input type="text" id="b9" onclick="check(b9)" value="" readonly><br><br>
 
-            <input type="button" value="Undo" onclick="undo()" style="cursor: pointer;">
-            <input type="button" value="New Game" onclick="location.reload()" style="cursor: pointer;">
+            <input type="button" value="Undo" onclick="undo()" style="cursor: pointer; width: 120px; height: 50px; font-size: 20px;">
+            <input type="button" value="New Game" onclick="location.reload()" style="cursor: pointer; width: 120px; height: 50px; font-size: 20px;">
 
         </div>
 
