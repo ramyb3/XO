@@ -1,24 +1,15 @@
+<!DOCTYPE html>
 <html>
 
     <head>
+
+        <link rel="stylesheet" href="styles.css">
+
         <meta name="viewport" content="width=device-width, initial-scale=0.75">
+
+        <title>Tic Tac Toe</title>
+
     </head>
-
-    <style>
-
-        #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9 
-        {
-            width: 80px;
-            height: 52px;
-            margin: auto;
-            border: 1px solid gray;
-            border-radius: 6px;
-            font-size: 30px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-    </style>
 
     <script>
 
@@ -117,24 +108,20 @@
 
     </script>
 
-    <body>
-       
-        <div style= "text-align: center;">
+    <body><br>
+     
+        <input type="text" id="b1" onclick="check(b1)" value="" readonly>
+        <input type="text" id="b2" onclick="check(b2)" value="" readonly>
+        <input type="text" id="b3" onclick="check(b3)" value="" readonly><br><br>
+        <input type="text" id="b4" onclick="check(b4)" value="" readonly>
+        <input type="text" id="b5" onclick="check(b5)" value="" readonly>
+        <input type="text" id="b6" onclick="check(b6)" value="" readonly><br><br>
+        <input type="text" id="b7" onclick="check(b7)" value="" readonly>
+        <input type="text" id="b8" onclick="check(b8)" value="" readonly>
+        <input type="text" id="b9" onclick="check(b9)" value="" readonly><br><br>
 
-            <input type="text" id="b1" onclick="check(b1)" value="" readonly>
-            <input type="text" id="b2" onclick="check(b2)" value="" readonly>
-            <input type="text" id="b3" onclick="check(b3)" value="" readonly><br><br>
-            <input type="text" id="b4" onclick="check(b4)" value="" readonly>
-            <input type="text" id="b5" onclick="check(b5)" value="" readonly>
-            <input type="text" id="b6" onclick="check(b6)" value="" readonly><br><br>
-            <input type="text" id="b7" onclick="check(b7)" value="" readonly>
-            <input type="text" id="b8" onclick="check(b8)" value="" readonly>
-            <input type="text" id="b9" onclick="check(b9)" value="" readonly><br><br>
-
-            <input type="button" value="Undo" onclick="undo()" style="cursor: pointer; width: 120px; height: 50px; font-size: 20px;">
-            <input type="button" value="New Game" onclick="location.reload()" style="cursor: pointer; width: 120px; height: 50px; font-size: 20px;">
-
-        </div>
+        <input type="button" class="button" value="Undo" onclick="undo()">
+        <input type="button" class="button" value="New Game" onclick="location.reload()">
 
     </body>
 
