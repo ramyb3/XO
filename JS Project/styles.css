@@ -1,25 +1,23 @@
-body
-{
-    margin: auto;
-    text-align: center;
+body {
+  margin: auto;
+  text-align: center;
+  padding-top: 3vh;
 }
 
-#b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9 
-{
-    width: 80px;
-    height: 52px;
-    margin: auto;
-    border: 1px solid gray;
-    border-radius: 6px;
-    font-size: 30px;
-    text-align: center;
-    cursor: pointer;
+#b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9 {
+  width: 80px;
+  height: 52px;
+  margin: auto;
+  border: 1px solid gray;
+  border-radius: 6px;
+  font-size: 30px;
+  text-align: center;
+  cursor: pointer;
 }
 
-.button
-{
-    cursor: pointer;
-    width: 120px;
-    height: 50px;
-    font-size: 20px;
+.button {
+  cursor: pointer;
+  width: 120px;
+  height: 50px;
+  font-size: 20px;
 }
