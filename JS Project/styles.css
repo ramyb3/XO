@@ -4,10 +4,16 @@ body {
   padding-top: 3vh;
 }
 
-#b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9 {
+button {
+  cursor: pointer;
+  width: 120px;
+  height: 50px;
+  font-size: 20px;
+}
+
+input {
   width: 80px;
   height: 52px;
-  margin: auto;
   border: 1px solid gray;
   border-radius: 6px;
   font-size: 30px;
@@ -15,9 +21,9 @@ body {
   cursor: pointer;
 }
 
-.button {
-  cursor: pointer;
-  width: 120px;
-  height: 50px;
-  font-size: 20px;
+.layout {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding-bottom: 10px;
 }
